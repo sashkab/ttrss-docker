@@ -9,13 +9,13 @@ services:
       - ttrss:/app
       - ./rss/config.php:/app/config.php
     links:
-      - ttrss
+      - phpfpm
     depends_on:
-      - ttrss
+      - phpfpm
     ports:
      - "8080:80"
 
-  ttrss:
+  phpfpm:
     build:
         context: rss/
         dockerfile: Dockerfile
@@ -25,6 +25,23 @@ services:
       - ./rss/config.php:/app/config.php
     links:
       - postgres
+    depends_on:
+      - postgres
+    command: /usr/sbin/php-fpm7 --nodaemonize
+
+  update_daemon:
+    build:
+        context: rss/
+        dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - ttrss:/app
+      - ./rss/config.php:/app/config.php
+    depends_on:
+      - postgres
+    links:
+      - postgres
+    command: sudo -u ttrss bash -c "sleep 10 && /usr/bin/php7 /app/update_daemon2.php"
 
   postgres:
     image: postgres:9.6-alpine

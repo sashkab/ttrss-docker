@@ -4,7 +4,7 @@ LABEL description="tt-rss: web-based news feed aggregator."
 LABEL maintainer="github@compuix.com"
 
 RUN set -xe \
-    && apk add --no-cache bash curl supervisor ca-certificates \
+    && apk add --no-cache bash curl sudo ca-certificates postgresql-client \
         php7-json \
         php7-xml \
         php7-mbstring \
@@ -24,7 +24,6 @@ RUN set -xe \
         php7-intl \
         php7-fpm \
         php7 \
-        postgresql-client \
     && addgroup -g 8080 ttrss && adduser -D -H -h /app -g ttrss -u 8080 -G ttrss ttrss \
     && mkdir /app \
     && curl -o - https://git.tt-rss.org/git/tt-rss/archive/master.tar.gz | tar -xz -C /app/ --strip-components=1 \
@@ -32,8 +31,7 @@ RUN set -xe \
 
 ADD php-fpm.conf /etc/php7/php-fpm.conf
 ADD www.conf /etc/php7/php-fpm.d/www.conf
-ADD supervisord.conf /etc/supervisor/supervisord.conf
 
 EXPOSE 9000/tcp
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+CMD [ "/bin/sh" ]
