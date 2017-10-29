@@ -11,7 +11,11 @@
 Install docker, docker-compose, clone this repository and run
 
 ```sh
-docker-compose up -d
+docker-compose build && \   
+docker-compose up -d && \
+sleep 5s && ./setup.sh && \
+docker-compose restart && \
+docker-compose logs -f
 ```
 
 Then access tt-rss on http://localhost:8080.
@@ -20,7 +24,13 @@ This is work-in-progress snapshot. Something works, something doesn't, and somet
 
 ## TODO
 
-1. Drop included git-submodule, download latest version while building ttrss container.
 1. Enable SSL
 1. Support for custom hostnames
 1. Backup/restore jobs
+
+
+### notes
+
+```sh
+docker-compose down && docker volume rm ttrssdocker_ttrss ttrssdocker_pgdata && docker-compose build && docker-compose up -d && sleep 5s && ./setup.sh && docker-compose restart && docker-compose logs -f
+```

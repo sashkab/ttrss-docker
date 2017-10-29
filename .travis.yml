@@ -3,5 +3,18 @@ sudo: required
 services:
   - docker
 
-script:
+before_install:
   - docker-compose build
+
+install:
+  - docker-compose up -d
+  - sleep 5s && ./setup.sh
+  - docker-compose restart
+
+script:
+  - sleep 5s
+  - curl -I http://localhost:8080
+
+after_script:
+  - docker-compose down
+  - docker volume rm ttrssdocker_ttrss ttrssdocker_pgdata
