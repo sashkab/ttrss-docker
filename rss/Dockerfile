@@ -32,6 +32,4 @@ RUN set -xe \
 ADD php-fpm.conf /etc/php7/php-fpm.conf
 ADD www.conf /etc/php7/php-fpm.d/www.conf
 
-EXPOSE 9000/tcp
-
 CMD [ "/bin/sh" ]

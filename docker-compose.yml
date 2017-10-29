@@ -29,6 +29,8 @@ services:
     depends_on:
       - postgres
     command: /usr/sbin/php-fpm7 --nodaemonize
+    expose:
+      - "9000"
 
   update_daemon:
     build:
