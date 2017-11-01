@@ -18,7 +18,7 @@
 	// *** Basic settings (important!) ***
 	// ***********************************
 
-	define('SELF_URL_PATH', 'http://localhost:8080/');
+	define('SELF_URL_PATH', 'http://localhost/');
 	// Full URL of your tt-rss installation. This should be set to the
 	// location of tt-rss directory, e.g. http://example.org/tt-rss/
 	// You need to set this option correctly otherwise several features
@@ -165,7 +165,7 @@
 	// *** Other settings (less important) ***
 	// ***************************************
 
-	define('CHECK_FOR_UPDATES', true);
+	define('CHECK_FOR_UPDATES', false);
 	// Check for updates automatically if running Git version
 
 	define('ENABLE_GZIP_OUTPUT', false);
@@ -184,7 +184,7 @@
 	// Disabling auth_internal in this list would automatically disable
 	// reset password link on the login form.
 
-	define('LOG_DESTINATION', 'syssql');
+	define('LOG_DESTINATION', 'sql');
 	// Error log destination to use. Possible values: sql (uses internal logging
 	// you can read in Preferences -> System), syslog - logs to system log.
 	// Setting this to blank uses PHP logging (usually to http server
