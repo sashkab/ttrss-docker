@@ -13,7 +13,7 @@ install:
 
 script:
   - sleep 5s
-  - curl -I http://localhost:8080
+  - curl -I http://localhost
 
 after_script:
   - docker-compose down
