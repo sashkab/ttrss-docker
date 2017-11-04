@@ -9,6 +9,7 @@ services:
     volumes:
       - ./caddy/Caddyfile:/etc/Caddyfile:ro
       - ttrss:/app
+      - caddy:/root/.caddy
       - ./rss/config.php:/app/config.php
     links:
       - phpfpm
@@ -62,3 +63,4 @@ services:
 volumes:
   pgdata:
   ttrss:
+  caddy:
