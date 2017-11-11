@@ -2,9 +2,10 @@
 
 [![Build Status](https://travis-ci.org/sashkab/ttrss-docker.svg?branch=master)](https://travis-ci.org/sashkab/ttrss-docker)
 
-* nginx
+* caddy
 * postges 9.6.x
 * docker-compose
+* php-fpm 7
 
 ## Usage
 
