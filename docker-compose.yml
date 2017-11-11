@@ -18,6 +18,11 @@ services:
     ports:
      - "80:80"
      - "443:443"
+    logging:
+      options:
+        max-size: "100k"
+        max-file: "3"
+
 
   phpfpm:
     build:
@@ -34,6 +39,11 @@ services:
     command: /usr/sbin/php-fpm7 --nodaemonize
     expose:
       - "9000"
+    logging:
+      options:
+        max-size: "100k"
+        max-file: "3"
+
 
   update_daemon:
     build:
@@ -48,6 +58,11 @@ services:
     links:
       - postgres
     command: sudo -u ttrss bash -c "sleep 10 && /usr/bin/php7 /app/update_daemon2.php"
+    logging:
+      options:
+        max-size: 2m
+        max-file: "2"
+
 
   postgres:
     image: postgres:9.6-alpine
