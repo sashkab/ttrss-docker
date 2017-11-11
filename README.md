@@ -26,7 +26,7 @@ This is work-in-progress snapshot. Something works, something doesn't, and somet
 
 ## TODO
 
-1. Backup/restore jobs
+1. Restore jobs
 1. Support for custom hostnames (currently it's done manually)
 
 ### notes
