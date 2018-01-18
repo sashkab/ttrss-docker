@@ -24,6 +24,7 @@ RUN set -xe \
         php7-intl \
         php7-fpm \
         php7-pdo \
+        php7-pdo_pgsql \
         php7 \
     && addgroup -g 8080 ttrss && adduser -D -H -h /app -g ttrss -u 8080 -G ttrss ttrss \
     && mkdir /app \
