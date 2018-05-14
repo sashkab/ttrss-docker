@@ -1,0 +1,20 @@
+docker-compose build --no-cache caddy && docker-compose stop caddy && docker-compose rm -f caddy && docker-compose up -d caddy
+
+docker-compose build --no-cache phpfpm && docker-compose stop phpfpm && docker-compose rm -f phpfpm && docker-compose up -d phpfpm
+
+docker-compose build --no-cache update_daemon && docker-compose stop update_daemon && docker-compose rm -f update_daemon && docker-compose up -d update_daemon
+
+----
+
+# cody web server build from source
+
+```bash
+apk add --no-cache go git musl-dev \
+&& mkdir $HOME/go \
+&& export GOHOME=$HOME/go \
+&& go get github.com/mholt/caddy/caddy \
+&& go get github.com/caddyserver/builds \
+&& cd $GOHOME/src/github.com/mholt/caddy/caddy \
+&& cd git checkout v0.10.10 \
+&& go run build.go
+```
