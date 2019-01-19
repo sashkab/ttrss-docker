@@ -1,6 +1,6 @@
 # tt-rss in docker
 
-[![Build Status](https://travis-ci.org/sashkab/ttrss-docker.svg?branch=master)](https://travis-ci.org/sashkab/ttrss-docker)
+[![Build Status](https://dev.azure.com/sashka1/sashkab/_apis/build/status/sashkab.ttrss-docker?branchName=master)](https://dev.azure.com/sashka1/sashkab/_build/latest?definitionId=3&branchName=master)
 
 * caddy
 * postges 9.6.x
@@ -10,11 +10,11 @@
 ## Usage
 
 1. Install docker, docker-compose, clone this repository and run.
-1. Update `rss/cofnig.php` with your hostname, email and other settings. 
-1. Update caddy/Caddyfile with your hostname and uncomment ssl-related settings. 
+1. Update `rss/cofnig.php` with your hostname, email and other settings.
+1. Update caddy/Caddyfile with your hostname and uncomment ssl-related settings.
 
 ```sh
-docker-compose build && \   
+docker-compose build && \
 docker-compose up -d && \
 sleep 5s && ./setup.sh && \
 docker-compose restart && \
