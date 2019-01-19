@@ -1,0 +1,25 @@
+trigger:
+- master
+
+pr:
+- master
+
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+steps:
+- script: |
+    docker-compose build
+    docker-compose up -d
+    sleep 5s && ./setup.sh
+    docker-compose restart
+    sleep 5s
+    curl -I http://localhost
+    curl -sI http://localhost/config.php | grep 403
+    curl -sI http://localhost/cache | grep 403
+    curl -sI http://localhost/cache/ | grep 403
+    ./backup.sh && ls -la ~/.backup/ttrss*gz
+    docker-compose down
+    docker volume rm ttrssdocker_ttrss ttrssdocker_pgdata
+
+  displayName: 'docker-compose build'
