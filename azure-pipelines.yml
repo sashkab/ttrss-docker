@@ -18,6 +18,7 @@ steps:
     curl -sI http://localhost/config.php | grep 403
     curl -sI http://localhost/cache | grep 403
     curl -sI http://localhost/cache/ | grep 403
+    # curl -I --tlsv1.3 http://localhost | grep 200
     ./backup.sh && ls -la ~/.backup/ttrss*gz
     docker-compose -p ttrssdocker down
     docker volume rm ttrssdocker_ttrss ttrssdocker_pgdata
