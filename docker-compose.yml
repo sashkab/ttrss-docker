@@ -65,7 +65,7 @@ services:
 
 
   postgres:
-    image: postgres:9.6-alpine
+    image: postgres:11.3-alpine
     restart: always
     environment:
       POSTGRES_USER: ttrss
