@@ -3,7 +3,7 @@
 [![Build Status](https://dev.azure.com/sashka1/sashkab/_apis/build/status/sashkab.ttrss-docker?branchName=master)](https://dev.azure.com/sashka1/sashkab/_build/latest?definitionId=3&branchName=master)
 
 * caddy
-* postges 9.6.x
+* postges 11.3
 * docker-compose
 * php-fpm 7
 
