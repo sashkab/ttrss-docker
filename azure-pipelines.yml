@@ -9,7 +9,7 @@ pool:
 
 steps:
 - script: |
-    docker-compose -p ttrssdocker build
+    set -e
     docker-compose -p ttrssdocker up -d
     sleep 5s && ./setup.sh
     docker-compose -p ttrssdocker restart
