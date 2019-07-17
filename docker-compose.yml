@@ -2,9 +2,7 @@ version: "3"
 
 services:
   caddy:
-    build:
-        context: caddy/
-        dockerfile: Dockerfile
+    image: sashk/docker-caddy1:latest
     restart: always
     volumes:
       - ./caddy/Caddyfile:/etc/Caddyfile:ro
