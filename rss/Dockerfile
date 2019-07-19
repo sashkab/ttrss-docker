@@ -34,6 +34,5 @@ RUN set -xe \
     && chmod -R 777 /app/cache/images /app/cache/upload /app/cache/export /app/feed-icons /app/lock
 
 ADD php-fpm.conf /etc/php7/php-fpm.conf
-ADD www.conf /etc/php7/php-fpm.d/www.conf
 
 CMD [ "/bin/sh" ]
