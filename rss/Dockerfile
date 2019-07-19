@@ -1,4 +1,4 @@
-FROM alpine:3.9
+FROM alpine:3.10
 
 LABEL description="tt-rss: web-based news feed aggregator."
 LABEL maintainer="github@compuix.com"
