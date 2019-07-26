@@ -5,7 +5,7 @@ services:
     image: sashk/docker-caddy1:latest
     restart: always
     volumes:
-      - ./caddy/Caddyfile:/etc/Caddyfile:ro
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
       - ttrss:/app
       - caddy:/root/.caddy
       - ./rss/config.php:/app/config.php
