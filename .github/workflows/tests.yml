@@ -1,0 +1,34 @@
+name: Github Actions CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  schedule:
+    - cron: "0 5 * * 0"
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run tests
+      run: |
+        set -e
+        docker-compose -p ttrssdocker up -d
+        sleep 5s && ./setup.sh
+        docker-compose -p ttrssdocker restart
+        sleep 5s
+        curl -I http://localhost
+        curl -sI http://localhost/config.php | grep 403
+        curl -sI http://localhost/cache | grep 403
+        curl -sI http://localhost/cache/ | grep 403
+        # curl -I --tlsv1.3 http://localhost | grep 200
+        ./backup.sh && ls -la ~/.backup/ttrss*gz
+        docker-compose -p ttrssdocker down
+        docker volume rm ttrssdocker_ttrss ttrssdocker_pgdata
