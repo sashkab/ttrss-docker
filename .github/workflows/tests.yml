@@ -11,7 +11,7 @@ on:
     - cron: "0 5 * * 0"
 
 env:
-  IMAGE_NAME: docker-postfix
+  IMAGE_NAME: ttrss-docker
 
 jobs:
   build:
