@@ -28,6 +28,7 @@ jobs:
         sleep 5s
         curl -I http://localhost
         curl -sI http://localhost/config.php | grep 403
+        curl -sI http://localhost/.htaccess | grep 403
         curl -sI http://localhost/cache | grep 403
         curl -sI http://localhost/cache/ | grep 403
         # curl -I --tlsv1.3 http://localhost | grep 200

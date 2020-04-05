@@ -23,9 +23,7 @@ services:
 
 
   phpfpm:
-    build:
-        context: rss/
-        dockerfile: Dockerfile
+    image: docker.pkg.github.com/sashkab/ttrss-docker/ttrss-docker:latest
     restart: always
     volumes:
       - ttrss:/app
@@ -44,9 +42,7 @@ services:
 
 
   update_daemon:
-    build:
-        context: rss/
-        dockerfile: Dockerfile
+    image: docker.pkg.github.com/sashkab/ttrss-docker/ttrss-docker:latest
     restart: always
     volumes:
       - ttrss:/app

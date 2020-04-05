@@ -5,6 +5,10 @@ localhost:80 {
     gzip
 
     root /app
+    internal /cache
+    internal /.htaccess
+    internal /config.php
+
     fastcgi / phpfpm:9000 php
     errors visible
     log stdout
