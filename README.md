@@ -1,9 +1,7 @@
 # tt-rss in docker
 
-[![Build Status](https://dev.azure.com/sashka1/sashkab/_apis/build/status/sashkab.ttrss-docker?branchName=master)](https://dev.azure.com/sashka1/sashkab/_build/latest?definitionId=3&branchName=master)
-
 * caddy
-* postges 11.3
+* postges 12.2
 * docker-compose
 * php-fpm 7
 
@@ -23,7 +21,7 @@ docker-compose logs -f
 
 Then access tt-rss on http://localhost.
 
-This is work-in-progress snapshot. Something works, something doesn't, and sometimes data will be lost. Use on your own risk. Report bugs and problems. I'm testing this on macOS using Docker 17.09. This might or might not work on older version of Docker and docker-compose.
+This is work-in-progress snapshot. Something works, something doesn't, and sometimes data will be lost. Use on your own risk. Report bugs and problems. I'm testing this on macOS using Docker 19.03. This might or might not work on older version of Docker and docker-compose.
 
 ## TODO
 
