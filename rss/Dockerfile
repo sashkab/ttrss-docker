@@ -1,4 +1,4 @@
-FROM alpine:3.11
+FROM alpine:3.12
 
 LABEL \
     description="tt-rss: web-based news feed aggregator." \
