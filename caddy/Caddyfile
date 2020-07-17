@@ -7,7 +7,7 @@ localhost:80 {
     root * /app
 
     # @ipfilter {
-    #     not remote_ip 127.0.0.1
+    #     not remote_ip 127.0.0.1 127.0.0.2
     # }
     # respond @ipfilter 403
 
@@ -19,7 +19,7 @@ localhost:80 {
     php_fastcgi phpfpm:9000
     log {
         output stdout
-        format console
+        format single_field common_log
     }
 
     # errors visible

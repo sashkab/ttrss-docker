@@ -5,6 +5,8 @@ LABEL \
     maintainer="github@compuix.com" \
     version="2019.07.19"
 
+VOLUME /app
+
 RUN set -xe \
     && apk add --no-cache bash curl sudo ca-certificates postgresql-client \
         php7-json \
