@@ -31,7 +31,7 @@ RUN set -xe \
         php7-pdo_pgsql \
         php7 \
     && addgroup -g 8080 ttrss && adduser -D -H -h /app -g ttrss -u 8080 -G ttrss ttrss \
-    && mkdir /app \
+    && mkdir -p /app \
     && curl -o - https://git.tt-rss.org/git/tt-rss/archive/master.tar.gz | tar -xz -C /app/ --strip-components=1 \
     && chmod -R 777 /app/cache/images /app/cache/upload /app/cache/export /app/feed-icons /app/lock
 
