@@ -2,28 +2,28 @@
 
 localhost:80 {
     # tls ssl@host.domain.com
-    gzip
+    encode gzip
 
-    root /app
-    internal /cache
-    internal /.htaccess
-    internal /config.php
+    root * /app
 
-    fastcgi / phpfpm:9000 php
-    errors visible
-    log stdout
-    errors stderr
+    # @ipfilter {
+    #     not remote_ip 127.0.0.1
+    # }
+    # respond @ipfilter 403
 
-   # ipfilter / {
-   #     rule allow
-   #     ip 127.0.0.1
-   # }
-
-   # header / Strict-Transport-Security "max-age=31536000"
-
-    status 403 /forbidden
-    rewrite {
-        if {path} match /(config.php|\.htaccess|cache)
-        to /forbidden
+    @blocked {
+	path /cache /cache/* /.htaccess /config.php
     }
+    respond @blocked 403
+
+    php_fastcgi phpfpm:9000
+    log {
+        output stdout
+        format console
+    }
+
+    # errors visible
+    # errors stderr
+
+    # header Strict-Transport-Security max-age=31536000;
 }

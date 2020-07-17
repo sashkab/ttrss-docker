@@ -2,7 +2,7 @@ version: "3"
 
 services:
   caddy:
-    image: sashk/docker-caddy1:latest
+    image: docker.pkg.github.com/sashkab/docker-caddy2/docker-caddy2:latest
     restart: always
     volumes:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
