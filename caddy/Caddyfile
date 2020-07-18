@@ -5,6 +5,7 @@ localhost:80 {
     encode gzip
 
     root * /app
+    file_server *
 
     # @ipfilter {
     #     not remote_ip 127.0.0.1 127.0.0.2
