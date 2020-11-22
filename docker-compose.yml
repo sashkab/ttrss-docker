@@ -33,7 +33,7 @@ services:
       - postgres
     depends_on:
       - postgres
-    command: /usr/sbin/php-fpm7 --nodaemonize
+    command: /usr/bin/run.sh
     expose:
       - "9000"
     logging:
@@ -52,7 +52,7 @@ services:
       - postgres
     links:
       - postgres
-    command: sudo -u ttrss bash -c "sleep 10 && /usr/bin/php7 /app/update_daemon2.php"
+    command: /usr/bin/update.sh
     logging:
       options:
         max-size: 2m

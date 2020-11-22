@@ -42,8 +42,8 @@ jobs:
         docker-compose -p ttrssdocker up -d
         sleep 5s && ./setup.sh
         docker-compose -p ttrssdocker restart
-        sleep 5s
-        curl -I http://localhost
+        sleep 10s
+        curl -sI http://localhost | grep "200 OK"
         curl -sI http://localhost/config.php | grep 403
         curl -sI http://localhost/.htaccess | grep 403
         curl -sI http://localhost/cache | grep 403
