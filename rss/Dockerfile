@@ -3,10 +3,10 @@ FROM alpine:3.12
 LABEL \
     description="tt-rss: web-based news feed aggregator." \
     maintainer="github@compuix.com" \
-    version="2020.07.17"
+    version="2020.11.22"
 
 RUN set -xe \
-    && apk add --no-cache bash curl sudo ca-certificates postgresql-client \
+    && apk add --no-cache bash curl rsync sudo ca-certificates postgresql-client \
         php7-json \
         php7-xml \
         php7-mbstring \
@@ -27,14 +27,12 @@ RUN set -xe \
         php7-fpm \
         php7-pdo \
         php7-pdo_pgsql \
-        php7 \
-    && addgroup -g 8080 ttrss && adduser -D -H -h /app -g ttrss -u 8080 -G ttrss ttrss \
-    && mkdir -p /app \
-    && curl -o - https://git.tt-rss.org/git/tt-rss/archive/master.tar.gz | tar -xz -C /app/ --strip-components=1 \
-    && chmod -R 777 /app/cache/images /app/cache/upload /app/cache/export /app/feed-icons /app/lock
+        php7
 
 ADD php-fpm.conf /etc/php7/php-fpm.conf
+ADD run.sh /usr/bin/run.sh
+ADD update.sh /usr/bin/update.sh
 
 VOLUME /app
 
-CMD [ "/bin/sh" ]
+CMD [ "/usr/bin/run.sh" ]

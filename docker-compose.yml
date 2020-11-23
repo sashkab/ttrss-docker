@@ -7,8 +7,7 @@ services:
     volumes:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
       - ttrss:/app
-      - caddy_config:/config
-      - caddy_data:/data
+      - caddy2:/caddy
       - ./rss/config.php:/app/config.php
     links:
       - phpfpm
@@ -33,7 +32,7 @@ services:
       - postgres
     depends_on:
       - postgres
-    command: /usr/sbin/php-fpm7 --nodaemonize
+    command: /usr/bin/run.sh
     expose:
       - "9000"
     logging:
@@ -52,7 +51,7 @@ services:
       - postgres
     links:
       - postgres
-    command: sudo -u ttrss bash -c "sleep 10 && /usr/bin/php7 /app/update_daemon2.php"
+    command: /usr/bin/update.sh
     logging:
       options:
         max-size: 2m
@@ -73,5 +72,4 @@ services:
 volumes:
   pgdata:
   ttrss:
-  caddy_config:
-  caddy_data:
+  caddy2:
