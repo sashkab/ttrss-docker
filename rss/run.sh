@@ -26,4 +26,4 @@ for x in cache cache/images cache/upload cache/export feed-icons lock; do
 done
 
 touch "$APP_DIR/.ready"
-/usr/sbin/php-fpm7 --nodaemonize
+/usr/sbin/php-fpm8 --nodaemonize

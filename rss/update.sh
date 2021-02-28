@@ -11,4 +11,4 @@ while [ ! -e /app/.ready ]; do
     sleep 5;
 done
 
-sudo -u ttrss /usr/bin/php7 /app/update_daemon2.php
+sudo -u ttrss /usr/bin/php8 /app/update_daemon2.php
