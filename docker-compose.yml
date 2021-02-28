@@ -8,7 +8,8 @@ services:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
       - ttrss:/app
       - caddy2:/caddy
-      - ./rss/config.php:/app/config.php
+    env_file:
+       - .env
     links:
       - phpfpm
     depends_on:
@@ -27,7 +28,8 @@ services:
     restart: always
     volumes:
       - ttrss:/app
-      - ./rss/config.php:/app/config.php
+    env_file:
+       - .env
     links:
       - postgres
     depends_on:
@@ -46,7 +48,8 @@ services:
     restart: always
     volumes:
       - ttrss:/app
-      - ./rss/config.php:/app/config.php
+    env_file:
+       - .env
     depends_on:
       - postgres
     links:

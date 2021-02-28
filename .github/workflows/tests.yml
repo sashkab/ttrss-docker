@@ -38,11 +38,12 @@ jobs:
 
     - name: Run tests
       run: |
-        set -e
+        set -ex
         docker-compose -p ttrssdocker up -d
         sleep 5s && ./setup.sh
         docker-compose -p ttrssdocker restart
         sleep 10s
+        curl -sI http://localhost
         curl -sI http://localhost | grep "200 OK"
         curl -sI http://localhost/config.php | grep 403
         curl -sI http://localhost/.htaccess | grep 403
