@@ -16,7 +16,6 @@ rsync -avr --delete \
 		--exclude cache \
 		--exclude feed-icons \
 		--exclude lock \
-		--exclude config.php \
 		/src/ "$APP_DIR/"
 
 for x in cache feed-icons lock; do

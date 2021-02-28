@@ -8,7 +8,6 @@ services:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
       - ttrss:/app
       - caddy2:/caddy
-      - ./rss/config.php:/app/config.php
     links:
       - phpfpm
     depends_on:
@@ -27,12 +26,13 @@ services:
     restart: always
     volumes:
       - ttrss:/app
-      - ./rss/config.php:/app/config.php
     links:
       - postgres
     depends_on:
       - postgres
     command: /usr/bin/run.sh
+    env_file:
+       - .env
     expose:
       - "9000"
     logging:
@@ -46,12 +46,13 @@ services:
     restart: always
     volumes:
       - ttrss:/app
-      - ./rss/config.php:/app/config.php
     depends_on:
       - postgres
     links:
       - postgres
     command: /usr/bin/update.sh
+    env_file:
+       - .env
     logging:
       options:
         max-size: 2m
