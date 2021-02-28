@@ -10,7 +10,8 @@ APP_DIR=/app
 mkdir -p "$APP_DIR" /src
 rm -f "$APP_DIR/.ready"
 
-curl -o - https://git.tt-rss.org/git/tt-rss/archive/master.tar.gz | tar -xz -C /src/ --strip-components=1
+# NB: 2021.02.27 temporary sticking to old commit
+curl -o - https://git.tt-rss.org/git/tt-rss/archive/b8786215dcd3f374d1a63b14af590ae97003a96f.tar.gz | tar -xz -C /src/ --strip-components=1
 
 rsync -avr --delete \
 		--exclude cache \
