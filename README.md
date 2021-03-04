@@ -3,7 +3,7 @@
 * caddy2
 * postges 12.2
 * docker-compose
-* php-fpm 7
+* php-fpm 8
 
 ## Usage
 
