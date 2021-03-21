@@ -3,3 +3,10 @@ docker build rss --file rss/Dockerfile --tag image && docker tag image docker.pk
 docker-compose -p ttrssdocker up -d && sleep 5 && ./setup.sh && docker-compose -p ttrssdocker restart && sleep 10 && curl -sI http://localhost
 
 docker-compose -p ttrssdocker down && docker volume rm ttrssdocker_ttrss ttrssdocker_pgdata
+
+
+---
+
+```sql
+UPDATE ttrss_filters2_rules SET cat_id=1;
+```
