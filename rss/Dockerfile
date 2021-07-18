@@ -1,9 +1,9 @@
-FROM alpine:3.13
+FROM alpine:3.14
 
 LABEL \
     description="tt-rss: web-based news feed aggregator." \
     maintainer="github@compuix.com" \
-    version="2021.02.28"
+    version="2021.07.18"
 
 RUN set -xe \
     && apk add --no-cache bash curl rsync sudo ca-certificates postgresql-client \
