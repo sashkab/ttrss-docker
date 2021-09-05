@@ -2,7 +2,7 @@ version: "3"
 
 services:
   caddy:
-    image: docker.pkg.github.com/sashkab/docker-caddy2/docker-caddy2:latest
+    image: ghcr.io//sashkab/docker-caddy2/docker-caddy2:latest
     restart: always
     volumes:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
@@ -23,7 +23,7 @@ services:
 
 
   phpfpm:
-    image: docker.pkg.github.com/sashkab/ttrss-docker/ttrss-docker:latest
+    image: ghcr.io/sashkab/ttrss-docker/ttrss-docker:latest
     restart: always
     volumes:
       - ttrss:/app
@@ -42,7 +42,7 @@ services:
 
 
   update_daemon:
-    image: docker.pkg.github.com/sashkab/ttrss-docker/ttrss-docker:latest
+    image: ghcr.io/sashkab/ttrss-docker/ttrss-docker:latest
     restart: always
     volumes:
       - ttrss:/app
