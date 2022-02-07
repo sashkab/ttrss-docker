@@ -11,4 +11,6 @@ while [ ! -e /app/.ready ]; do
     sleep 5;
 done
 
-sudo -u ttrss /usr/bin/php8 /app/update_daemon2.php
+cd "$APP_DIR"
+sudo -E -u ttrss /usr/bin/php8 ./update.php --update-schema
+sudo -E -u ttrss /usr/bin/php8 ./update_daemon2.php
