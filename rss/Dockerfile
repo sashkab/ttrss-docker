@@ -3,7 +3,7 @@ FROM alpine:3.15.0
 LABEL \
     description="tt-rss: web-based news feed aggregator." \
     maintainer="github@compuix.com" \
-    version="2022.02.06"
+    version="2022.03.14"
 
 RUN set -xe \
     && apk add --no-cache bash curl rsync sudo ca-certificates postgresql-client \
@@ -27,7 +27,10 @@ RUN set -xe \
         php8-pdo \
         php8-pdo_pgsql \
         php8 \
-    && ln -s /usr/bin/php8 /usr/bin/php
+    && ln -s /usr/bin/php8 /usr/bin/php \
+    && wget -q -P /usr/local/share/ca-certificates/ \
+        https://cacerts.digicert.com/ThawteRSACA2018.crt.pem \
+    && update-ca-certificates
 
 ADD php-fpm.conf /etc/php8/php-fpm.conf
 ADD run.sh /usr/bin/run.sh
