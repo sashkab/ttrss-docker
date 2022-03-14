@@ -6,7 +6,7 @@ LABEL \
     version="2022.03.14"
 
 RUN set -xe \
-    && apk add --no-cache bash curl rsync sudo ca-certificates postgresql-client \
+    && apk add --no-cache bash git curl rsync sudo ca-certificates postgresql-client \
         php8-json \
         php8-xml \
         php8-mbstring \
