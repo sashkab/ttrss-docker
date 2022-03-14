@@ -6,5 +6,5 @@ while [ ! "$(docker container inspect -f '{{.State.Running}}' ttrssdocker_phpfpm
     sleep 5
 done
 
-docker exec -i ttrssdocker_phpfpm_1 bash -c "while [ ! -e /app/.ready ]; do echo waiting for app container...; sleep 5; done"
+docker exec -i ttrssdocker_phpfpm_1 bash -c "while [ ! -e /app/.ready ]; do echo waiting for app container...; sleep 10; done"
 docker exec -i ttrssdocker_phpfpm_1 bash -c "cd /app; sudo -E -u ttrss /usr/bin/php8 ./update.php --update-schema=force-yes"
