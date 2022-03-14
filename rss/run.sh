@@ -17,7 +17,7 @@ else
 	mkdir -p "$APP_DIR" \
 	&& git clone "https://git.tt-rss.org/fox/tt-rss.git" "$APP_DIR" \
     && cd $APP_DIR \
-	&& git config core.filemode false && \
+	&& git config core.filemode false
 fi
 
 for x in cache cache/images cache/upload cache/export feed-icons lock; do
