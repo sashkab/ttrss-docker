@@ -10,14 +10,15 @@ if ! id ttrss; then
     adduser -D -H -h "$APP_DIR" -g ttrss -u 8080 -G ttrss ttrss
 fi
 
-curl -o - https://git.tt-rss.org/fox/tt-rss/archive/master.tar.gz | tar -xz -C /src/ --strip-components=1
-
-rsync -avr --delete \
-		--exclude cache \
-		--exclude feed-icons \
-		--exclude lock \
-		--exclude /config.php \
-		/src/ "$APP_DIR/"
+if [ -d "$APP_DIR/.git" ]; then
+	cd "$APP_DIR" \
+    && git pull origin master
+else
+	mkdir -p "$APP_DIR" \
+	&& git clone "https://git.tt-rss.org/fox/tt-rss.git" "$APP_DIR" \
+    && cd $APP_DIR \
+	&& git config core.filemode false && \
+fi
 
 for x in cache cache/images cache/upload cache/export feed-icons lock; do
     mkdir -p "$APP_DIR/$x"
