@@ -1,12 +1,14 @@
 #!/bin/bash
 set -ex
 
+APP_DIR=/app
+
 if ! id ttrss; then
     addgroup -g 8080 ttrss
-    adduser -D -H -h /app -g ttrss -u 8080 -G ttrss ttrss
+    adduser -D -H -h "$APP_DIR" -g ttrss -u 8080 -G ttrss ttrss
 fi
 
-while [ ! -e /app/.ready ]; do
+while [ ! -e "$APP_DIR/.ready" ]; do
     echo "waiting for app container..."
     sleep 5;
 done
