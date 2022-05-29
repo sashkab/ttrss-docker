@@ -25,6 +25,7 @@ rsync -avr --delete \
 		--exclude feed-icons \
 		--exclude lock \
 		--exclude /config.php \
+		--exclude .git \
 		/src/ "$APP_DIR/"
 
 for x in cache cache/images cache/upload cache/export feed-icons lock; do
