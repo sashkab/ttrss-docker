@@ -27,7 +27,7 @@ RUN set -xe \
         php8-pdo \
         php8-pdo_pgsql \
         php8 \
-    && ln -s /usr/bin/php8 /usr/bin/php \
+        icu-data-full \
     && wget -q -P /usr/local/share/ca-certificates/ \
         https://cacerts.digicert.com/ThawteRSACA2018.crt.pem \
     && update-ca-certificates
