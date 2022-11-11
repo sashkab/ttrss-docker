@@ -1,8 +1,8 @@
-FROM alpine:3.16.1
+FROM alpine:3.16.3
 
 LABEL \
     description="tt-rss: web-based news feed aggregator." \
-    version="2022.07.31" \
+    version="2022.11.11" \
     maintainer="github@compuix.com"
 
 RUN set -xe \
