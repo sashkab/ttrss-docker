@@ -21,9 +21,9 @@ else
 fi
 
 rsync -avr --delete \
-		--exclude cache \
-		--exclude feed-icons \
-		--exclude lock \
+		--exclude /cache \
+		--exclude /feed-icons \
+		--exclude /lock \
 		--exclude /config.php \
 		--exclude .git \
 		/src/ "$APP_DIR/"
