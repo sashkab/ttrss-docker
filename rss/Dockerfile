@@ -7,6 +7,13 @@ LABEL \
 
 RUN set -xe \
     && apk add --no-cache bash git curl rsync sudo ca-certificates postgresql-client \
+        php81-phar \
+        php81-xmlwriter \
+        php81-simplexml \
+        php81-tokenizer \
+        php81-ctype \
+        php81-zip \
+        php81-exif \
         php81-json \
         php81-xml \
         php81-mbstring \
