@@ -7,32 +7,32 @@ LABEL \
 
 RUN set -xe \
     && apk add --no-cache bash git curl rsync sudo ca-certificates postgresql-client \
-        php8-json \
-        php8-xml \
-        php8-mbstring \
-        php8-curl \
-        php8-posix \
-        php8-gd \
-        php8-session \
-        php8-openssl \
-        php8-dom \
-        php8-common \
-        php8-pgsql \
-        php8-iconv \
-        php8-pcntl \
-        php8-zlib \
-        php8-fileinfo \
-        php8-intl \
-        php8-fpm \
-        php8-pdo \
-        php8-pdo_pgsql \
-        php8 \
+        php81-json \
+        php81-xml \
+        php81-mbstring \
+        php81-curl \
+        php81-posix \
+        php81-gd \
+        php81-session \
+        php81-openssl \
+        php81-dom \
+        php81-common \
+        php81-pgsql \
+        php81-iconv \
+        php81-pcntl \
+        php81-zlib \
+        php81-fileinfo \
+        php81-intl \
+        php81-fpm \
+        php81-pdo \
+        php81-pdo_pgsql \
+        php81 \
         icu-data-full \
     && wget -q -P /usr/local/share/ca-certificates/ \
         https://cacerts.digicert.com/ThawteRSACA2018.crt.pem \
     && update-ca-certificates
 
-ADD php-fpm.conf /etc/php8/php-fpm.conf
+ADD php-fpm.conf /etc/php81/php-fpm.conf
 ADD run.sh /usr/bin/run.sh
 ADD update.sh /usr/bin/update.sh
 
