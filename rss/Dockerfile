@@ -7,39 +7,39 @@ LABEL \
 
 RUN set -xe \
     && apk add --no-cache bash git curl rsync sudo ca-certificates postgresql-client \
-        php81-phar \
-        php81-xmlwriter \
-        php81-simplexml \
-        php81-tokenizer \
-        php81-ctype \
-        php81-zip \
-        php81-exif \
-        php81-json \
-        php81-xml \
-        php81-mbstring \
-        php81-curl \
-        php81-posix \
-        php81-gd \
-        php81-session \
-        php81-openssl \
-        php81-dom \
-        php81-common \
-        php81-pgsql \
-        php81-iconv \
-        php81-pcntl \
-        php81-zlib \
-        php81-fileinfo \
-        php81-intl \
-        php81-fpm \
-        php81-pdo \
-        php81-pdo_pgsql \
-        php81 \
+        php82-phar \
+        php82-xmlwriter \
+        php82-simplexml \
+        php82-tokenizer \
+        php82-ctype \
+        php82-zip \
+        php82-exif \
+        php82-json \
+        php82-xml \
+        php82-mbstring \
+        php82-curl \
+        php82-posix \
+        php82-gd \
+        php82-session \
+        php82-openssl \
+        php82-dom \
+        php82-common \
+        php82-pgsql \
+        php82-iconv \
+        php82-pcntl \
+        php82-zlib \
+        php82-fileinfo \
+        php82-intl \
+        php82-fpm \
+        php82-pdo \
+        php82-pdo_pgsql \
+        php82 \
         icu-data-full \
     && wget -q -P /usr/local/share/ca-certificates/ \
         https://cacerts.digicert.com/ThawteRSACA2018.crt.pem \
     && update-ca-certificates
 
-ADD php-fpm.conf /etc/php81/php-fpm.conf
+ADD php-fpm.conf /etc/php82/php-fpm.conf
 ADD run.sh /usr/bin/run.sh
 ADD update.sh /usr/bin/update.sh
 
