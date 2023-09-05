@@ -34,5 +34,7 @@ for x in cache cache/images cache/upload cache/export feed-icons lock; do
     find "$APP_DIR/$x" -type f -exec chmod 666 {} \;
 done
 
+ln -sfn /usr/bin/php82 /usr/bin/php
+
 touch "$APP_DIR/.ready"
 /usr/sbin/php-fpm82 --nodaemonize
