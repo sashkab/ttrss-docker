@@ -37,7 +37,8 @@ RUN set -xe \
         icu-data-full \
     && wget -q -P /usr/local/share/ca-certificates/ \
         https://cacerts.digicert.com/ThawteRSACA2018.crt.pem \
-    && update-ca-certificates
+    && update-ca-certificates \
+    && ln -sfn php82 /usr/bin/php
 
 ADD php-fpm.conf /etc/php82/php-fpm.conf
 ADD run.sh /usr/bin/run.sh
