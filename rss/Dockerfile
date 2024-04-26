@@ -37,12 +37,14 @@ RUN set -xe \
         icu-data-full \
     && wget -q -P /usr/local/share/ca-certificates/ \
         https://cacerts.digicert.com/ThawteRSACA2018.crt.pem \
-    && update-ca-certificates \
     && ln -sfn php82 /usr/bin/php
 
 ADD php-fpm.conf /etc/php82/php-fpm.conf
 ADD run.sh /usr/bin/run.sh
 ADD update.sh /usr/bin/update.sh
+ADD ssl/SectigoECCDomainValidationSecureServerCA.crt.pem /usr/local/share/ca-certificates/SectigoECCDomainValidationSecureServerCA.crt.pem
+
+RUN update-ca-certificates
 
 VOLUME /app
 
