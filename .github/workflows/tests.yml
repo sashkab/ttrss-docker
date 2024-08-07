@@ -40,6 +40,7 @@ jobs:
       run: |
         set -ex
         docker compose -p ttrssdocker up -d
+        docker ps
         sleep 40s && docker compose -p ttrssdocker logs && ./setup.sh
         docker compose -p ttrssdocker restart
         sleep 30s
