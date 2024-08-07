@@ -2,21 +2,21 @@
 
 * caddy2
 * postges 12.2
-* docker-compose
+* docker compose
 * php-fpm 8
 
 ## Usage
 
-1. Install docker, docker-compose, clone this repository.
+1. Install docker, docker compose, clone this repository.
 1. Update `rss/cofnig.php` with your hostname, email and other settings.
 1. Update caddy/Caddyfile with your hostname and uncomment ssl-related settings.
-1. Start docker-compose:
+1. Start docker compose:
 
     ```sh
-    docker-compose up -d && \
+    docker compose up -d && \
     sleep 5s && ./setup.sh && \
-    docker-compose restart && \
-    docker-compose logs -f
+    docker compose restart && \
+    docker compose logs -f
     ```
 
 1. Access tt-rss on http://localhost, or on host you configured in steps above.

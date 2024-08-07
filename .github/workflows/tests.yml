@@ -39,9 +39,9 @@ jobs:
     - name: Run tests
       run: |
         set -ex
-        docker-compose -p ttrssdocker up -d
-        sleep 40s && docker-compose -p ttrssdocker logs && ./setup.sh
-        docker-compose -p ttrssdocker restart
+        docker compose -p ttrssdocker up -d
+        sleep 40s && docker compose -p ttrssdocker logs && ./setup.sh
+        docker compose -p ttrssdocker restart
         sleep 30s
         curl -sI http://localhost
         curl -sI http://localhost | grep "200 OK"
@@ -51,11 +51,11 @@ jobs:
         curl -sI http://localhost/cache/ | grep 403
         curl -sI --tlsv1.3 http://localhost | grep 200
         if [ "$(curl -si http://localhost | grep -c  'Startup failed')" -ge 2 ]; then
-            docker-compose -p ttrssdocker logs update_daemon
+            docker compose -p ttrssdocker logs update_daemon
             false
           fi
         ./backup.sh && ls -la ~/.backup/ttrss*gz
-        docker-compose -p ttrssdocker down
+        docker compose -p ttrssdocker down
         docker volume rm ttrssdocker_ttrss ttrssdocker_pgdata ttrssdocker_caddy2
 
     - name: Push image

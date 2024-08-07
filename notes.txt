@@ -1,8 +1,8 @@
 docker build rss --file rss/Dockerfile --tag image && docker tag image ghcr.io/sashkab/ttrss-docker/ttrss-docker:latest
 
-docker-compose -p ttrssdocker up -d && sleep 15 && ./setup.sh && docker-compose -p ttrssdocker restart && sleep 30 && curl -sI http://localhost
+docker compose -p ttrssdocker up -d && sleep 15 && ./setup.sh && docker compose -p ttrssdocker restart && sleep 30 && curl -sI http://localhost
 
-docker-compose -p ttrssdocker down && docker volume rm ttrssdocker_ttrss ttrssdocker_pgdata
+docker compose -p ttrssdocker down && docker volume rm ttrssdocker_ttrss ttrssdocker_pgdata
 
 
 ---
