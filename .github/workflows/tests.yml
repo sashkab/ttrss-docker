@@ -41,6 +41,10 @@ jobs:
         set -ex
         docker compose -p ttrssdocker up -d
         docker ps
+        echo "DEBUG **********************************************"
+        docker container inspect -f '{{.State.Running}}' ttrssdocker_phpfpm_1
+        docker container inspect -f '{{.State.Running}}' ttrssdocker-phpfpm-1
+        echo "DEBUG **********************************************"
         sleep 40s && docker compose -p ttrssdocker logs && ./setup.sh
         docker compose -p ttrssdocker restart
         sleep 30s
