@@ -2,7 +2,7 @@ FROM alpine:3.20.3
 
 LABEL \
     maintainer="github@compuix.com" \
-    version="2024.09.20" \
+    version="2024.11.17" \
     description="tt-rss: web-based news feed aggregator."
 
 RUN set -xe \
@@ -36,6 +36,7 @@ RUN set -xe \
     php82 \
     icu-data-full \
     && wget -q -P /usr/local/share/ca-certificates/ https://cacerts.digicert.com/ThawteRSACA2018.crt.pem \
+    && wget -q -P /usr/local/share/ca-certificates/ https://cacerts.digicert.com/ThawteTLSRSACAG1.crt.pem \
     && ln -sfn php82 /usr/bin/php
 
 ADD php-fpm.conf /etc/php82/php-fpm.conf
