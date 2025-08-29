@@ -1,8 +1,8 @@
-FROM alpine:3.21.2
+FROM alpine:3.22.1
 
 LABEL \
     maintainer="github@compuix.com" \
-    version="2025.01.14" \
+    version="2025.08.29" \
     description="tt-rss: web-based news feed aggregator."
 
 RUN set -xe \
@@ -43,6 +43,8 @@ ADD php-fpm.conf /etc/php82/php-fpm.conf
 ADD run.sh /usr/bin/run.sh
 ADD update.sh /usr/bin/update.sh
 ADD ssl/SectigoECCDomainValidationSecureServerCA.crt.pem /usr/local/share/ca-certificates/SectigoECCDomainValidationSecureServerCA.crt.pem
+ADD ssl/SectigoR36.pem /usr/local/share/ca-certificates/SectigoR36.pem
+ADD ssl/SectigoR46.pem /usr/local/share/ca-certificates/SectigoR46.pem
 
 RUN update-ca-certificates
 
