@@ -18,50 +18,50 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Log into registry
-      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Log into registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-    - name: Build image
-      run: docker build rss --file rss/Dockerfile --tag image
+      - name: Build image
+        run: docker build rss --file rss/Dockerfile --tag image
 
-    - name: Tag image
-      run: |
-        IMAGE_ID=ghcr.io/${{ github.repository }}/$IMAGE_NAME
-        VERSION=$(date "+%Y.%m.%d")
-        echo IMAGE_ID=$IMAGE_ID
-        echo VERSION=$VERSION
-        docker tag image $IMAGE_ID:$VERSION
-        docker push $IMAGE_ID:$VERSION
-        docker tag $IMAGE_ID:$VERSION $IMAGE_ID:latest
+      - name: Tag image
+        run: |
+          IMAGE_ID=ghcr.io/${{ github.repository }}/$IMAGE_NAME
+          VERSION=$(date "+%Y.%m.%d")
+          echo IMAGE_ID=$IMAGE_ID
+          echo VERSION=$VERSION
+          docker tag image $IMAGE_ID:$VERSION
+          docker push $IMAGE_ID:$VERSION
+          docker tag $IMAGE_ID:$VERSION $IMAGE_ID:latest
 
-    - name: Run tests
-      run: |
-        set -ex
-        docker compose -p ttrssdocker up -d
-        docker ps
-        docker container inspect -f '{{.State.Running}}' ttrssdocker-phpfpm-1
-        sleep 40s && docker compose -p ttrssdocker logs && ./setup.sh
-        docker compose -p ttrssdocker restart
-        sleep 30s
-        curl -sI http://localhost
-        curl -sI http://localhost | grep "200 OK"
-        curl -sI http://localhost/config.php | grep 403
-        curl -sI http://localhost/.htaccess | grep 403
-        curl -sI http://localhost/cache | grep 403
-        curl -sI http://localhost/cache/ | grep 403
-        curl -sI --tlsv1.3 http://localhost | grep 200
-        if [ "$(curl -si http://localhost | grep -c  'Startup failed')" -ge 2 ]; then
-            docker compose -p ttrssdocker logs update_daemon
-            false
-          fi
-        ./backup.sh && ls -la ~/.backup/ttrss*gz
-        docker compose -p ttrssdocker down
-        docker volume rm ttrssdocker_ttrss ttrssdocker_pgdata ttrssdocker_caddy2
+      - name: Run tests
+        run: |
+          set -ex
+          docker compose -p ttrssdocker up -d
+          docker ps
+          docker container inspect -f '{{.State.Running}}' ttrssdocker-phpfpm-1
+          sleep 60s && docker compose -p ttrssdocker logs && ./setup.sh
+          docker compose -p ttrssdocker restart
+          sleep 60s
+          curl -sI http://localhost
+          curl -sI http://localhost | grep "200 OK"
+          curl -sI http://localhost/config.php | grep 403
+          curl -sI http://localhost/.htaccess | grep 403
+          curl -sI http://localhost/cache | grep 403
+          curl -sI http://localhost/cache/ | grep 403
+          curl -sI --tlsv1.3 http://localhost | grep 200
+          if [ "$(curl -si http://localhost | grep -c  'Startup failed')" -ge 2 ]; then
+              docker compose -p ttrssdocker logs update_daemon
+              false
+            fi
+          ./backup.sh && ls -la ~/.backup/ttrss*gz
+          docker compose -p ttrssdocker down
+          docker volume rm ttrssdocker_ttrss ttrssdocker_pgdata ttrssdocker_caddy2
 
-    - name: Push image
-      run: |
-        IMAGE_ID=ghcr.io/${{ github.repository }}/$IMAGE_NAME
-        VERSION=$(date "+%Y.%m.%d")
-        docker push $IMAGE_ID:latest
+      - name: Push image
+        run: |
+          IMAGE_ID=ghcr.io/${{ github.repository }}/$IMAGE_NAME
+          VERSION=$(date "+%Y.%m.%d")
+          docker push $IMAGE_ID:latest
