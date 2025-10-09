@@ -12,7 +12,7 @@ fi
 
 if [ -d "/src/.git" ]; then
 	cd "/src" \
-    && git pull origin master
+    && git pull origin main
 else
 	mkdir -p "/src" \
 	&& git clone "https://github.com/tt-rss/tt-rss.git/" "/src" \
