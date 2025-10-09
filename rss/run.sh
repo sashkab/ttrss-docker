@@ -15,7 +15,7 @@ if [ -d "/src/.git" ]; then
     && git pull origin master
 else
 	mkdir -p "/src" \
-	&& git clone "https://git.tt-rss.org/fox/tt-rss.git" "/src" \
+	&& git clone "https://github.com/tt-rss/tt-rss.git/" "/src" \
     && cd /src \
 	&& git config core.filemode false
 fi
