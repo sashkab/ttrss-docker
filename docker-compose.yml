@@ -14,13 +14,12 @@ services:
     depends_on:
       - phpfpm
     ports:
-     - "80:80"
-     - "443:443"
+      - "80:80"
+      - "443:443"
     logging:
       options:
         max-size: "100k"
         max-file: "3"
-
 
   phpfpm:
     image: ghcr.io/sashkab/ttrss-docker/ttrss-docker:latest
@@ -40,7 +39,6 @@ services:
         max-size: "100k"
         max-file: "3"
 
-
   update_daemon:
     image: ghcr.io/sashkab/ttrss-docker/ttrss-docker:latest
     restart: always
@@ -57,9 +55,8 @@ services:
         max-size: 2m
         max-file: "2"
 
-
   postgres:
-    image: postgres:12-alpine
+    image: postgres:17-alpine
     restart: always
     environment:
       POSTGRES_USER: ttrss
