@@ -1,5 +1,3 @@
-version: "3"
-
 services:
   caddy:
     image: ghcr.io/sashkab/docker-caddy2/docker-caddy2:latest

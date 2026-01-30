@@ -28,6 +28,11 @@ rsync -avr --delete \
 		--exclude .git \
 		/src/ "$APP_DIR/"
 
+if [ -f "$APP_DIR/config.php" ]; then
+    ls -ld /app/config.php
+    sha256sum /app/config.php
+fi
+
 for x in cache cache/images cache/upload cache/export feed-icons lock; do
     mkdir -p "$APP_DIR/$x"
     chmod 777 "$APP_DIR/$x"
@@ -35,4 +40,4 @@ for x in cache cache/images cache/upload cache/export feed-icons lock; do
 done
 
 touch "$APP_DIR/.ready"
-/usr/sbin/php-fpm82 --nodaemonize
+/usr/sbin/php-fpm84 --nodaemonize

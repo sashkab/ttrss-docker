@@ -39,6 +39,8 @@ jobs:
       - name: Run tests
         run: |
           set -ex
+          docker compose -p ttrssdocker down
+          docker system prune -f
           docker compose -p ttrssdocker up -d
           docker ps
           docker container inspect -f '{{.State.Running}}' ttrssdocker-phpfpm-1

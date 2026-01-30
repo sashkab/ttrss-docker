@@ -14,3 +14,5 @@
     putenv('TTRSS_SMTP_SECURE=');
     putenv('TTRSS_SMTP_FROM_ADDRESS=');
     putenv('CONFIG_VERSION=26');
+
+?>

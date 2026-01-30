@@ -14,5 +14,5 @@ while [ ! -e "$APP_DIR/.ready" ]; do
 done
 
 cd "$APP_DIR"
-sudo -E -u ttrss /usr/bin/php82 ./update.php --update-schema=force-yes
-sudo -E -u ttrss /usr/bin/php82 ./update_daemon2.php
+sudo -E -u ttrss /usr/bin/php84 ./update.php --update-schema=force-yes
+sudo -E -u ttrss /usr/bin/php84 ./update_daemon2.php
