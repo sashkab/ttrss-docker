@@ -33,7 +33,7 @@ if [ -f "$APP_DIR/config.php" ]; then
     sha256sum /app/config.php
 fi
 
-for x in cache cache/images cache/upload cache/export feed-icons lock; do
+for x in cache cache/images cache/upload cache/export feed-icons lock plugins.local templates.local themes.local; do
     mkdir -p "$APP_DIR/$x"
     chmod 777 "$APP_DIR/$x"
     find "$APP_DIR/$x" -type f -exec chmod 666 {} \;
