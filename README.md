@@ -1,9 +1,9 @@
 # tt-rss in docker
 
 * caddy2
-* postges 12.2
+* postges 17
 * docker compose
-* php-fpm 8
+* php-fpm 8.5
 
 ## Usage
 

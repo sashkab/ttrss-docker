@@ -40,4 +40,4 @@ for x in cache cache/images cache/upload cache/export feed-icons lock plugins.lo
 done
 
 touch "$APP_DIR/.ready"
-/usr/sbin/php-fpm84 --nodaemonize
+/usr/sbin/php-fpm85 --nodaemonize
